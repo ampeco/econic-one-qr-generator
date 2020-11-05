@@ -501,12 +501,12 @@ var QRCode;
 				}
 			}
 
-var _bikeModel = "Revolution";
-var _bikeID = "6666";
-var _bikePIN = "1234";
-var _bikeFrame = "1234567890";
-var _bikeMfgdt = "SEP 29 2020";
-var _bikeColor = "Blue";
+// var _bikeModel = "Revolution";
+// var _bikeID = "6666";
+// var _bikePIN = "1234";
+// var _bikeFrame = "1234567890";
+// var _bikeMfgdt = "SEP 29 2020";
+// var _bikeColor = "Blue";
 
 _oContext.font = 'bold 16px Courier New';
 _oContext.fillText("   ID: "+this._ourlbikeID, 0, nCount+200);
@@ -516,6 +516,9 @@ _oContext.fillText("MFGDT: "+this._ourlbikeMfgdt, 0, nCount+245);
 _oContext.fillText("MODEL: "+this._ourlbikeModel, 0, nCount+260);
 _oContext.fillText("COLOR: "+this._ourlbikeColor, 0, nCount+275);
 
+if (this._ourlLockCode != '') {
+_oContext.fillText(" CODE: "+this._ourlLockCode, 0, nCount+290);
+}
 
 
 			this._bIsPainted = true;
@@ -682,7 +685,7 @@ _oContext.fillText("COLOR: "+this._ourlbikeColor, 0, nCount+275);
 	 * 
 	 * @param {String} sText link data
 	 */
-	QRCode.prototype.makeCode = function (sText, urlbikeID, urlbikePIN, urlbikeFrame, urlbikeMfgdt, urlbikeModel,urlbikeColor) {
+	QRCode.prototype.makeCode = function (sText, urlbikeID, urlbikePIN, urlbikeFrame, urlbikeMfgdt, urlbikeModel,urlbikeColor,urlLockCode ) {
 		this._oQRCode = new QRCodeModel(_getTypeNumber(sText, this._htOption.correctLevel), this._htOption.correctLevel);
 		this._oQRCode.addData(sText);
 		this._oQRCode.make();
@@ -695,6 +698,7 @@ _oContext.fillText("COLOR: "+this._ourlbikeColor, 0, nCount+275);
 		this._oDrawing._ourlbikeMfgdt = urlbikeMfgdt;
 		this._oDrawing._ourlbikeColor = urlbikeColor;
 		this._oDrawing._ourlbikeModel = urlbikeModel;
+		this._oDrawing._ourlLockCode = urlLockCode;
 		this._oDrawing.draw(this._oQRCode);
 		this.makeImage();
 	};
