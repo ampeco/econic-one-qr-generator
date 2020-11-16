@@ -10,7 +10,8 @@
 <body>
 <!-- <input id="text" type="text" value="https://app.econicone.com/public/pa/4319" style="width:80%" /><br /> -->
 <div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
-<!-- https://sinanawad.github.io/?urlQRText=QRtest2&urlbikeID=7666&urlbikePIN=7111&urlbikeFrame=0123456789&urlbikeMfgdt=30092020&urlbikeColor=Blue%20Red&urlbikeModel=Urban%20Light&urllockCode=R%20G%20B%20R%20G%20B -->
+<!-- https://sinanawad.github.io/
+	?urlQRText=QRtest2&urlbikeID=7666&urlbikePIN=7111&urlbikeFrame=0123456789&urlbikeMfgdt=30092020&urlbikeColor=Blue%20Red&urlbikeModel=Urban%20Light&urllockCode=R%20G%20B%20R%20G%20B -->
 
 <script type="text/javascript">
 var qrcode = new QRCode(document.getElementById("qrcode"), {
@@ -40,6 +41,8 @@ function makeCode () {
 	var urlbikeModel = getUrlVars()["urlbikeModel"];
 	var urllockCode = getUrlVars()["urllockCode"];
 
+
+	urlQRText = unescape(urlQRText);
 
 
 	urlbikeModel = decodeURIComponent(urlbikeModel.replace(/\+/g,  " "));
