@@ -520,6 +520,12 @@ if (this._ourlLockCode != '') {
 _oContext.fillText(" CODE: "+this._ourlLockCode, 0, nCount+290);
 }
 
+_oContext.font = 'Italic Bold 16px Courier New';
+_oContext.fillText("____________________", 0, nCount+300);
+_oContext.fillText("!! KEEP INFO SAFE !!", 0, nCount+320);
+_oContext.fillText("FOR FUTURE REFERENCE", 0, nCount+335);
+_oContext.fillText("____________________", 0, nCount+340);
+
 
 			this._bIsPainted = true;
 		};
