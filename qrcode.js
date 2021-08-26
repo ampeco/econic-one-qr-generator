@@ -501,33 +501,52 @@ var QRCode;
 				}
 			}
 
-// var _bikeModel = "Revolution";
-// var _bikeID = "6666";
-// var _bikePIN = "1234";
-// var _bikeFrame = "1234567890";
-// var _bikeMfgdt = "SEP 29 2020";
-// var _bikeColor = "Blue";
+			// var _bikeModel = "Revolution";
+			// var _bikeID = "6666";
+			// var _bikePIN = "1234";
+			// var _bikeFrame = "1234567890";
+			// var _bikeMfgdt = "SEP 29 2020";
+			// var _bikeColor = "Blue";
+			var vOffsetStep = 15;
+			var vOffsetBase = this._htOption.height - vOffsetStep;
 
-_oContext.font = 'bold 16px Courier New';
-_oContext.fillText("   ID: "+this._ourlbikeID, 0, nCount+200);
-_oContext.fillText("  PIN: "+this._ourlbikePIN, 0, nCount+215);
-_oContext.fillText("FRAME: "+this._ourlbikeFrame, 0, nCount+230);
-_oContext.fillText("MFGDT: "+this._ourlbikeMfgdt, 0, nCount+245);
-_oContext.fillText("MODEL: "+this._ourlbikeModel, 0, nCount+260);
-_oContext.fillText("COLOR: "+this._ourlbikeColor, 0, nCount+275);
+			_oContext.font = 'bold ' + this.fontSize() + 'px Courier New';
+			_oContext.fillText("   ID: "+this._ourlbikeID, 0, nCount+vOffsetBase);
+			_oContext.fillText("  PIN: "+this._ourlbikePIN, 0, nCount+vOffsetBase+vOffsetStep);
+			_oContext.fillText("FRAME: "+this._ourlbikeFrame, 0, nCount+vOffsetBase+(vOffsetStep*2));
+			_oContext.fillText("MFGDT: "+this._ourlbikeMfgdt, 0, nCount+vOffsetBase+(vOffsetStep*3));
+			_oContext.fillText("MODEL: "+this._ourlbikeModel, 0, nCount+vOffsetBase+(vOffsetStep*4));
+			_oContext.fillText("COLOR: "+this._ourlbikeColor, 0, nCount+vOffsetBase+(vOffsetStep*5));
 
-if (this._ourlLockCode != '') {
-_oContext.fillText(" CODE: "+this._ourlLockCode, 0, nCount+290);
-}
+			if (this._ourlLockCode != '') {
+				_oContext.fillText(" CODE: "+this._ourlLockCode, 0, nCount+vOffsetBase+(vOffsetStep*6));
+			}
 
-_oContext.font = 'Italic Bold 16px Courier New';
-_oContext.fillText("____________________", 0, nCount+300);
-_oContext.fillText("!! KEEP INFO SAFE !!", 0, nCount+320);
-_oContext.fillText("FOR FUTURE REFERENCE", 0, nCount+335);
-_oContext.fillText("____________________", 0, nCount+340);
-
+			_oContext.font = 'Italic Bold ' + this.fontSize() + 'px Courier New';
+			_oContext.fillText("____________________", 0, nCount+vOffsetBase+(vOffsetStep*7-10));
+			_oContext.fillText("!! KEEP INFO SAFE !!", 0, nCount+vOffsetBase+(vOffsetStep*8));
+			_oContext.fillText("FOR FUTURE REFERENCE", 0, nCount+vOffsetBase+(vOffsetStep*9));
+			_oContext.fillText("____________________", 0, nCount+vOffsetBase+(vOffsetStep*10-10));
 
 			this._bIsPainted = true;
+		};
+
+		/**
+		 * Return font size in pixels based on image height
+		 * @private
+		 * @returns {Number} size in px
+		 */
+		Drawing.prototype.fontSize = function () {
+			var sizePx = 12;
+			var height = this._htOption.height;
+			if (height <= 150) {
+				sizePx = 12;
+			} else if (height <= 175) {
+				sizePx = 14;
+			} else if (height <= 200) {
+				sizePx = 16;
+			}
+			return sizePx; 
 		};
 
 		/**
